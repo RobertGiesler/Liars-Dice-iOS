@@ -11,14 +11,18 @@
 		C4748378289E8C2C007AD366 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4748377289E8C2C007AD366 /* ContentView.swift */; };
 		C474837A289E8C2E007AD366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4748379289E8C2E007AD366 /* Assets.xcassets */; };
 		C474837D289E8C2E007AD366 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C474837C289E8C2E007AD366 /* Preview Assets.xcassets */; };
+		C4748384289EBD00007AD366 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4748383289EBD00007AD366 /* Die.swift */; };
+		C4B3538128A1196300582742 /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B3538028A1196300582742 /* Face.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C4748372289E8C2C007AD366 /* Liars Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Liars Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4748372289E8C2C007AD366 /* Liar's Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Liar's Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4748375289E8C2C007AD366 /* Liars_DiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Liars_DiceApp.swift; sourceTree = "<group>"; };
 		C4748377289E8C2C007AD366 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C4748379289E8C2E007AD366 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C474837C289E8C2E007AD366 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C4748383289EBD00007AD366 /* Die.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
+		C4B3538028A1196300582742 /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +47,7 @@
 		C4748373289E8C2C007AD366 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C4748372289E8C2C007AD366 /* Liars Dice.app */,
+				C4748372289E8C2C007AD366 /* Liar's Dice.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -53,6 +57,8 @@
 			children = (
 				C4748375289E8C2C007AD366 /* Liars_DiceApp.swift */,
 				C4748377289E8C2C007AD366 /* ContentView.swift */,
+				C4748383289EBD00007AD366 /* Die.swift */,
+				C4B3538028A1196300582742 /* Face.swift */,
 				C4748379289E8C2E007AD366 /* Assets.xcassets */,
 				C474837B289E8C2E007AD366 /* Preview Content */,
 			);
@@ -70,9 +76,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C4748371289E8C2C007AD366 /* Liars Dice */ = {
+		C4748371289E8C2C007AD366 /* Liar's Dice */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C4748380289E8C2E007AD366 /* Build configuration list for PBXNativeTarget "Liars Dice" */;
+			buildConfigurationList = C4748380289E8C2E007AD366 /* Build configuration list for PBXNativeTarget "Liar's Dice" */;
 			buildPhases = (
 				C474836E289E8C2C007AD366 /* Sources */,
 				C474836F289E8C2C007AD366 /* Frameworks */,
@@ -82,9 +88,9 @@
 			);
 			dependencies = (
 			);
-			name = "Liars Dice";
+			name = "Liar's Dice";
 			productName = "Liars Dice";
-			productReference = C4748372289E8C2C007AD366 /* Liars Dice.app */;
+			productReference = C4748372289E8C2C007AD366 /* Liar's Dice.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C474836D289E8C2C007AD366 /* Build configuration list for PBXProject "Liars Dice" */;
+			buildConfigurationList = C474836D289E8C2C007AD366 /* Build configuration list for PBXProject "Liar's Dice" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C4748371289E8C2C007AD366 /* Liars Dice */,
+				C4748371289E8C2C007AD366 /* Liar's Dice */,
 			);
 		};
 /* End PBXProject section */
@@ -137,8 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4B3538128A1196300582742 /* Face.swift in Sources */,
 				C4748378289E8C2C007AD366 /* ContentView.swift in Sources */,
 				C4748376289E8C2C007AD366 /* Liars_DiceApp.swift in Sources */,
+				C4748384289EBD00007AD366 /* Die.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +289,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "JamBarStudios.Liars-Dice";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Liar's Dice";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -310,7 +318,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "JamBarStudios.Liars-Dice";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Liar's Dice";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -320,7 +328,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C474836D289E8C2C007AD366 /* Build configuration list for PBXProject "Liars Dice" */ = {
+		C474836D289E8C2C007AD366 /* Build configuration list for PBXProject "Liar's Dice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C474837E289E8C2E007AD366 /* Debug */,
@@ -329,7 +337,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C4748380289E8C2E007AD366 /* Build configuration list for PBXNativeTarget "Liars Dice" */ = {
+		C4748380289E8C2E007AD366 /* Build configuration list for PBXNativeTarget "Liar's Dice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C4748381289E8C2E007AD366 /* Debug */,
