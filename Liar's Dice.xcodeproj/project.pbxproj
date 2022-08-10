@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C44A081328A268EB00CEFCB6 /* Factorials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A081228A268EB00CEFCB6 /* Factorials.swift */; };
 		C44A081528A26A6B00CEFCB6 /* MyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A081428A26A6B00CEFCB6 /* MyError.swift */; };
+		C44A081728A39CC600CEFCB6 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A081628A39CC600CEFCB6 /* Game.swift */; };
 		C4748376289E8C2C007AD366 /* Liars_DiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4748375289E8C2C007AD366 /* Liars_DiceApp.swift */; };
 		C4748378289E8C2C007AD366 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4748377289E8C2C007AD366 /* ContentView.swift */; };
 		C474837A289E8C2E007AD366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4748379289E8C2E007AD366 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		C44A081228A268EB00CEFCB6 /* Factorials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factorials.swift; sourceTree = "<group>"; };
 		C44A081428A26A6B00CEFCB6 /* MyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyError.swift; sourceTree = "<group>"; };
+		C44A081628A39CC600CEFCB6 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		C4748372289E8C2C007AD366 /* Liar's Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Liar's Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4748375289E8C2C007AD366 /* Liars_DiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Liars_DiceApp.swift; sourceTree = "<group>"; };
 		C4748377289E8C2C007AD366 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				C4748375289E8C2C007AD366 /* Liars_DiceApp.swift */,
 				C4748377289E8C2C007AD366 /* ContentView.swift */,
 				C4748383289EBD00007AD366 /* Die.swift */,
+				C44A081628A39CC600CEFCB6 /* Game.swift */,
 				C44A081228A268EB00CEFCB6 /* Factorials.swift */,
 				C44A081428A26A6B00CEFCB6 /* MyError.swift */,
 				C4B3538028A1196300582742 /* Face.swift */,
@@ -151,6 +154,7 @@
 			files = (
 				C44A081528A26A6B00CEFCB6 /* MyError.swift in Sources */,
 				C4B3538128A1196300582742 /* Face.swift in Sources */,
+				C44A081728A39CC600CEFCB6 /* Game.swift in Sources */,
 				C4748378289E8C2C007AD366 /* ContentView.swift in Sources */,
 				C4748376289E8C2C007AD366 /* Liars_DiceApp.swift in Sources */,
 				C44A081328A268EB00CEFCB6 /* Factorials.swift in Sources */,

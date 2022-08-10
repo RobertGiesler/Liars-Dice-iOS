@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Die {
+class Die: Hashable {
     var face: Face
     
     func roll() {
@@ -16,5 +16,14 @@ class Die {
     
     init() {
         self.face = Face(rawValue: Int.random(in: 1..<7))!
+    }
+    
+    
+    static func == (lhs: Die, rhs: Die) -> Bool {
+        return lhs.face.rawValue == rhs.face.rawValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(face.rawValue)
     }
 }

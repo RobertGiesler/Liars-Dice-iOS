@@ -7,13 +7,17 @@
 
 import Foundation
 
-class Factorials {
+struct Factorials {
     
-    static func factorial(n: Int) throws -> NSDecimalNumber {
-        if n < 0 {
-            throw MyError.illegalArgumentError("""
-                Factorials can only be calculated for non-negative integers.
-            """)
+    /// Calculates n!
+    ///
+    /// - parameters:
+    ///     - n: A non-negative 'Int'
+    /// - throws: 'MyError.illegalArgumentError' if a negative 'Int' is passed.
+    /// - returns: n! as a 'NSDecimalNumber'.
+    static func factorial(n: Int) -> NSDecimalNumber {
+        if n < 0 {   // Invalid argument
+            return NSDecimalNumber(0)
         }
         
         if n < 2 {
@@ -29,11 +33,16 @@ class Factorials {
     }
     
     
-    static func factorialFrac(n: Int, m: Int) throws -> NSDecimalNumber {
-        if (n < 0 || m < 0) {
-            throw MyError.illegalArgumentError("""
-                Factorials can only be calculated for non-negative integers.
-            """)
+    /// Calculates n!/m!
+    ///
+    /// - parameters:
+    ///     - n: A non-negative 'Int'.
+    ///     - m: A non-negative 'Int'.
+    /// - throws: 'MyError.illegalArgumentError' if a negative 'Int' is passed.
+    /// - returns: n!/m! as a 'NSDecimalNumber'.
+    static func factorialFrac(n: Int, m: Int) -> NSDecimalNumber {
+        if (n < 0 || m < 0) {   // Invalid argument
+            return NSDecimalNumber(0)
         }
         
         var result: NSDecimalNumber = 1
