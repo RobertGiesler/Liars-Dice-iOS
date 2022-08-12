@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4033BBD28A54EED00D7F633 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4033BBC28A54EED00D7F633 /* Page.swift */; };
+		C4033BBF28A5514200D7F633 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4033BBE28A5514200D7F633 /* MenuView.swift */; };
+		C4033BC128A5518100D7F633 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4033BC028A5518100D7F633 /* MotherView.swift */; };
+		C4033BC328A5519B00D7F633 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4033BC228A5519B00D7F633 /* ViewRouter.swift */; };
+		C4033BC528A5544400D7F633 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4033BC428A5544400D7F633 /* GameView.swift */; };
+		C4033BC728A5544B00D7F633 /* RevealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4033BC628A5544B00D7F633 /* RevealView.swift */; };
 		C44A081328A268EB00CEFCB6 /* Factorials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A081228A268EB00CEFCB6 /* Factorials.swift */; };
 		C44A081528A26A6B00CEFCB6 /* MyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A081428A26A6B00CEFCB6 /* MyError.swift */; };
 		C44A081728A39CC600CEFCB6 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A081628A39CC600CEFCB6 /* Game.swift */; };
 		C4748376289E8C2C007AD366 /* Liars_DiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4748375289E8C2C007AD366 /* Liars_DiceApp.swift */; };
-		C4748378289E8C2C007AD366 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4748377289E8C2C007AD366 /* ContentView.swift */; };
 		C474837A289E8C2E007AD366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4748379289E8C2E007AD366 /* Assets.xcassets */; };
 		C474837D289E8C2E007AD366 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C474837C289E8C2E007AD366 /* Preview Assets.xcassets */; };
 		C4748384289EBD00007AD366 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4748383289EBD00007AD366 /* Die.swift */; };
@@ -19,12 +24,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C4033BBC28A54EED00D7F633 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		C4033BBE28A5514200D7F633 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		C4033BC028A5518100D7F633 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
+		C4033BC228A5519B00D7F633 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		C4033BC428A5544400D7F633 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		C4033BC628A5544B00D7F633 /* RevealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealView.swift; sourceTree = "<group>"; };
 		C44A081228A268EB00CEFCB6 /* Factorials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factorials.swift; sourceTree = "<group>"; };
 		C44A081428A26A6B00CEFCB6 /* MyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyError.swift; sourceTree = "<group>"; };
 		C44A081628A39CC600CEFCB6 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		C4748372289E8C2C007AD366 /* Liar's Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Liar's Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4748375289E8C2C007AD366 /* Liars_DiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Liars_DiceApp.swift; sourceTree = "<group>"; };
-		C4748377289E8C2C007AD366 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C4748379289E8C2E007AD366 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C474837C289E8C2E007AD366 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C4748383289EBD00007AD366 /* Die.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
@@ -62,8 +72,13 @@
 			isa = PBXGroup;
 			children = (
 				C4748375289E8C2C007AD366 /* Liars_DiceApp.swift */,
-				C4748377289E8C2C007AD366 /* ContentView.swift */,
+				C4033BBE28A5514200D7F633 /* MenuView.swift */,
+				C4033BC028A5518100D7F633 /* MotherView.swift */,
+				C4033BC428A5544400D7F633 /* GameView.swift */,
+				C4033BC628A5544B00D7F633 /* RevealView.swift */,
+				C4033BC228A5519B00D7F633 /* ViewRouter.swift */,
 				C4748383289EBD00007AD366 /* Die.swift */,
+				C4033BBC28A54EED00D7F633 /* Page.swift */,
 				C44A081628A39CC600CEFCB6 /* Game.swift */,
 				C44A081228A268EB00CEFCB6 /* Factorials.swift */,
 				C44A081428A26A6B00CEFCB6 /* MyError.swift */,
@@ -155,9 +170,14 @@
 				C44A081528A26A6B00CEFCB6 /* MyError.swift in Sources */,
 				C4B3538128A1196300582742 /* Face.swift in Sources */,
 				C44A081728A39CC600CEFCB6 /* Game.swift in Sources */,
-				C4748378289E8C2C007AD366 /* ContentView.swift in Sources */,
+				C4033BBF28A5514200D7F633 /* MenuView.swift in Sources */,
+				C4033BC128A5518100D7F633 /* MotherView.swift in Sources */,
+				C4033BC728A5544B00D7F633 /* RevealView.swift in Sources */,
+				C4033BC528A5544400D7F633 /* GameView.swift in Sources */,
+				C4033BC328A5519B00D7F633 /* ViewRouter.swift in Sources */,
 				C4748376289E8C2C007AD366 /* Liars_DiceApp.swift in Sources */,
 				C44A081328A268EB00CEFCB6 /* Factorials.swift in Sources */,
+				C4033BBD28A54EED00D7F633 /* Page.swift in Sources */,
 				C4748384289EBD00007AD366 /* Die.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +313,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,6 +343,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

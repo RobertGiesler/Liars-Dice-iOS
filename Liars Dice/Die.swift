@@ -20,7 +20,7 @@ class Die: Hashable {
     
     
     static func == (lhs: Die, rhs: Die) -> Bool {
-        return lhs.face.rawValue == rhs.face.rawValue
+        return false
     }
     
     func hash(into hasher: inout Hasher) {

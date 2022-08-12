@@ -8,17 +8,19 @@
 import Foundation
 import SwiftUI
 
-class Game {
-    let dicePerPlayer: Int
-    let numPlayers: Int
-    var roundNum: Int
-    var numTotalDice: Int
-    var dice: Set<Die>
-    var bidProbs: [[Double]]   /* Saves the probabilities for possible bids. bidProbs[n] = [i,p] where p is the
+@MainActor
+class Game: ObservableObject {
+    private var dicePerPlayer: Int
+    private var numPlayers: Int
+    @Published var roundNum: Int
+    @Published var numTotalDice: Int
+    @Published var dice: Set<Die>
+    @Published var bidProbs: [[Double]]   /* Saves the probabilities for possible bids. bidProbs[n] = [i,p] where p is the
                                   probability that there are i dice showing the face n on the table.
                                   bidProbs[0] = [0,p] where p is the probability that the previous bid is a lie. */
     
     
+    /// Game initializer
     init(numPlayers: Int, dicePerPlayer: Int = 5) {
         self.dicePerPlayer = dicePerPlayer
         self.numPlayers = numPlayers
@@ -258,9 +260,13 @@ class Game {
     
     
     /// Resets the round number, dice, and bidProbs
-    func resetGame() {
-        roundNum = 0
-        numTotalDice = numPlayers * dicePerPlayer
+    func resetGame(numPlayers: Int, dicePerPlayer: Int = 5) {
+        self.dicePerPlayer = dicePerPlayer
+        self.numPlayers = numPlayers
+        self.roundNum = 0
+        self.numTotalDice = numPlayers * dicePerPlayer
+        self.dice = Set<Die>(minimumCapacity: dicePerPlayer)
+        self.bidProbs = Array(repeating: Array(repeating: 0, count: 2), count: 7)
         
         if (dice.count > dicePerPlayer) {
             dice.removeAll()
@@ -277,7 +283,6 @@ class Game {
         
         // Resetting bidProbs for own dice
         let myDice: [Int] = getDiceValues()
-        bidProbs = Array(repeating: Array(repeating: 0, count: 2), count: 7)
         bidProbs[0] = [0, 0]
         bidProbs[1] = [Double(myDice[0]), 0]   // Starting bid on face 1 not allowed
         for i in 2..<7 {

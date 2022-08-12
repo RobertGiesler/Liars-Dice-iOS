@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct Liars_DiceApp: App {
+    @StateObject var viewRouter = ViewRouter()
+    @StateObject var game = Game(numPlayers: 2)
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MotherView()
+                .environmentObject(viewRouter)
+                .environmentObject(game)
         }
     }
 }
