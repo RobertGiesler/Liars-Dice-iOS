@@ -86,7 +86,7 @@ class Game: ObservableObject {
         if diceNeeded <= 0 {
             return 1.0
         }
-        if quantity > numTotalDice {
+        if quantity > numTotalDice || diceNeeded > diceUnknown {
             return 0
         }
         
@@ -191,7 +191,7 @@ class Game: ObservableObject {
     /// Produces a bid based on the current state of bidProbs.
     ///
     /// - returns: '[i,n]' where 'i' is the face value and 'n' is the dice quantity of the bid. If 'i == 0', the previous bid is called as a lie.
-    func bid() -> [Double] {
+    func bid() -> [Int] {
         var maxIndex = 0
         
         // Definitely call the lie when it is certain
@@ -216,7 +216,7 @@ class Game: ObservableObject {
         let rand: Int = Int.random(in: 0..<maxIndices.count)
         maxIndex = maxIndices[rand]   // If there are multiple bids with equal probability, a random one is chosen
         
-        return [Double(maxIndex), bidProbs[maxIndex][0]]
+        return [maxIndex, Int(bidProbs[maxIndex][0])]
     }
     
     
@@ -260,7 +260,12 @@ class Game: ObservableObject {
     
     
     /// Resets the round number, dice, and bidProbs
-    func resetGame(numPlayers: Int, dicePerPlayer: Int = 5) {
+    func resetGame(numPlayers: Int, dicePerPlayer: Int = 5) throws {
+        
+        if numPlayers <= 0 || dicePerPlayer <= 0 {
+            throw MyError.illegalArgumentError("quantity must be greater than 0.")
+        }
+        
         self.dicePerPlayer = dicePerPlayer
         self.numPlayers = numPlayers
         self.roundNum = 0
