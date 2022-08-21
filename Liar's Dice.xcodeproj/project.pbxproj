@@ -16,6 +16,7 @@
 		C44A081328A268EB00CEFCB6 /* Factorials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A081228A268EB00CEFCB6 /* Factorials.swift */; };
 		C44A081528A26A6B00CEFCB6 /* MyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A081428A26A6B00CEFCB6 /* MyError.swift */; };
 		C44A081728A39CC600CEFCB6 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A081628A39CC600CEFCB6 /* Game.swift */; };
+		C4583C1728B236A1000E5B50 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4583C1628B236A1000E5B50 /* GameOverView.swift */; };
 		C4748376289E8C2C007AD366 /* Liars_DiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4748375289E8C2C007AD366 /* Liars_DiceApp.swift */; };
 		C474837A289E8C2E007AD366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4748379289E8C2E007AD366 /* Assets.xcassets */; };
 		C474837D289E8C2E007AD366 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C474837C289E8C2E007AD366 /* Preview Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		C44A081228A268EB00CEFCB6 /* Factorials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factorials.swift; sourceTree = "<group>"; };
 		C44A081428A26A6B00CEFCB6 /* MyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyError.swift; sourceTree = "<group>"; };
 		C44A081628A39CC600CEFCB6 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		C4583C1628B236A1000E5B50 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		C4748372289E8C2C007AD366 /* Liar's Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Liar's Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4748375289E8C2C007AD366 /* Liars_DiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Liars_DiceApp.swift; sourceTree = "<group>"; };
 		C4748379289E8C2E007AD366 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		C4748369289E8C2C007AD366 = {
 			isa = PBXGroup;
 			children = (
+				C4583C1628B236A1000E5B50 /* GameOverView.swift */,
 				C4748374289E8C2C007AD366 /* Liars Dice */,
 				C4748373289E8C2C007AD366 /* Products */,
 			);
@@ -178,6 +181,7 @@
 				C4748376289E8C2C007AD366 /* Liars_DiceApp.swift in Sources */,
 				C44A081328A268EB00CEFCB6 /* Factorials.swift in Sources */,
 				C4033BBD28A54EED00D7F633 /* Page.swift in Sources */,
+				C4583C1728B236A1000E5B50 /* GameOverView.swift in Sources */,
 				C4748384289EBD00007AD366 /* Die.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

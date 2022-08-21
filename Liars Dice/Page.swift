@@ -11,4 +11,5 @@ enum Page {
     case menuPage
     case gamePage
     case revealPage
+    case gameOverPage
 }

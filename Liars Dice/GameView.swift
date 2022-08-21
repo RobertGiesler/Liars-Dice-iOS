@@ -20,139 +20,138 @@ struct GameView: View {
     
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("My bid")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+        VStack {
+            HStack {
+                Spacer()
                 
-                ZStack {
-                    Rectangle()
-                        .frame(height: /*@START_MENU_TOKEN@*/150.0/*@END_MENU_TOKEN@*/)
-                        .cornerRadius(15)
-                        .padding([.leading, .trailing], 60.0)
-                        .foregroundColor(.brown)
-                        .opacity(0.2)
-                    
-                    getBidView(bid: currentBid)
+                Button() {
+                    viewRouter.currentPage = .menuPage
+                } label: {
+                    Image(systemName: "house")
                 }
-                
-                Text("Previous bid")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom)
-                
-                VStack(alignment: .leading) {
-                    Text("Number of dice")
-                        .font(.subheadline)
-                        
-                    TextField("Number of dice", value: $numPreviousBid, format: .number)
-                        .keyboardType(.numberPad)
-                        .textFieldStyle(.roundedBorder)
-                        .focused($numFocus)
-                        
-                }
-                .padding([.leading, .trailing], 60.0)
-                .padding(.bottom)
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button("Done") {
-                            numFocus = false
-                        }
-                    }
-                }
-                
-                VStack(alignment: .leading) {
-                    Text("Die face")
-                        .font(.subheadline)
-                    
-                    VStack {
-                        HStack {
-                            ForEach(1..<4) { face in
-                                Button() {
-                                    if facePreviousBid == Face(rawValue: face) {
-                                        facePreviousBid = nil
-                                    }
-                                    else {
-                                        facePreviousBid = Face(rawValue: face)
-                                    }
-                                } label: {
-                                    Image("Face\(face)")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .if(facePreviousBid == Face(rawValue: face)) { view in
-                                            view.overlay(
-                                                RoundedRectangle(cornerRadius: 15)
-                                                    .stroke(Color.blue, lineWidth: 3))
-                                        }
-                                }
-                            }
-                        }
-                        
-                        HStack {
-                            ForEach(4..<7) { face in
-                                Button() {
-                                    if facePreviousBid == Face(rawValue: face) {
-                                        facePreviousBid = nil
-                                    }
-                                    else {
-                                        facePreviousBid = Face(rawValue: face)
-                                    }
-                                } label: {
-                                    Image("Face\(face)")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .if(facePreviousBid == Face(rawValue: face)) { view in
-                                            view.overlay(
-                                                RoundedRectangle(cornerRadius: 15)
-                                                    .stroke(Color.blue, lineWidth: 3))
-                                        }
-                                }
-                            }
-                        }
-                    
-                    }
-                }
-                .padding([.leading, .trailing], 60.0)
-                
-                HStack {
-                    Button("Reveal dice") {
-                        viewRouter.currentPage = .revealPage
-                    }
-                    .buttonStyle(.bordered)
-                    
-                    Button() {
-                        /* Update bid probabilities and bit if numPreviousBid and
-                         facePreviousBid are not nil */
-                        if let quantity = numPreviousBid, let face = facePreviousBid {
-                            do {
-                                try game.updateBidProbabilities(quantity: quantity, face: face)
-                                
-                                currentBid = game.bid()
-                            } catch {
-                                negativeNumAlert = true
-                            }
-                        }
-                        // If one is nil, place first bid
-                        else {
-                            currentBid = game.bid()
-                        }
-                    } label: {
-                        if numPreviousBid == nil || facePreviousBid == nil {
-                            Text("First bid")
-                        }
-                        else {
-                            Text("Bid")
-                        }
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .alert("Number of dice must be positive", isPresented: $negativeNumAlert) {
-                        Button("OK", role: .cancel) {}
-                        }
-                }
-                .padding([.leading, .trailing], 60.0)
+                .padding(.horizontal, 30.0)
             }
+            
+            Spacer()
+            
+            Text("My bid")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            
+            ZStack {
+                Rectangle()
+                    .frame(height: 120)
+                    .cornerRadius(15)
+                    .padding([.leading, .trailing], 60.0)
+                    .foregroundColor(.brown)
+                    .opacity(0.2)
+                
+                getBidView(bid: currentBid)
+            }
+            
+            Text("Previous bid")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding(.bottom)
+            
+            VStack(alignment: .leading) {
+                Text("Number of dice")
+                    .font(.subheadline)
+                    
+                TextField("Number of dice", value: $numPreviousBid, format: .number)
+                    .keyboardType(.numberPad)
+                    .textFieldStyle(.roundedBorder)
+                    .focused($numFocus)
+                    
+            }
+            .padding([.leading, .trailing], 60.0)
+            .padding(.bottom)
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        numFocus = false
+                    }
+                }
+            }
+            
+            VStack(alignment: .leading) {
+                Text("Die face")
+                    .font(.subheadline)
+                VStack {
+                    ForEach(0..<2) { column in
+                        HStack {
+                            ForEach(1..<4) { row in
+                                let face = column * 3 + row
+                                Button() {
+                                    if facePreviousBid == Face(rawValue: face) {
+                                        facePreviousBid = nil
+                                    }
+                                    else {
+                                        facePreviousBid = Face(rawValue: face)
+                                    }
+                                } label: {
+                                    Image("Face\(face)")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .if(facePreviousBid == Face(rawValue: face)) { view in
+                                            view.overlay(
+                                                RoundedRectangle(cornerRadius: 15)
+                                                    .stroke(Color.blue, lineWidth: 3))
+                                        }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .padding([.leading, .trailing], 60.0)
+            .padding(.bottom)
+            
+            HStack {
+                Button() {
+                    viewRouter.currentPage = .revealPage
+                } label: {
+                    Text("Reveal dice")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+                
+                
+                Button() {
+                    /* Update bid probabilities and bit if numPreviousBid and
+                     facePreviousBid are not nil */
+                    if let quantity = numPreviousBid, let face = facePreviousBid {
+                        do {
+                            try game.updateBidProbabilities(quantity: quantity, face: face)
+                            
+                            currentBid = game.bid()
+                        } catch {
+                            negativeNumAlert = true
+                        }
+                    }
+                    // If one is nil, place first bid
+                    else {
+                        currentBid = game.bid()
+                    }
+                } label: {
+                    if numPreviousBid == nil || facePreviousBid == nil {
+                        Text("First bid")
+                            .frame(maxWidth: .infinity)
+                    }
+                    else {
+                        Text("Bid")
+                            .frame(maxWidth: .infinity)
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .alert("Number of dice must be positive", isPresented: $negativeNumAlert) {
+                    Button("OK", role: .cancel) {}
+                    }
+            }
+            .padding([.leading, .trailing], 60.0)
+            
+            Spacer()
         }
     }
 

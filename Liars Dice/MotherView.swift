@@ -19,6 +19,8 @@ struct MotherView: View {
             GameView()
         case .revealPage:
             RevealView()
+        case .gameOverPage:
+            GameOverView()
         }
     }
 }

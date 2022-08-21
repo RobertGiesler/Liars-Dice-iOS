@@ -12,6 +12,7 @@ import SwiftUI
 class Game: ObservableObject {
     private var dicePerPlayer: Int
     private var numPlayers: Int
+    @Published var winner: Bool = false  // For displaying message in GameOverView
     @Published var roundNum: Int
     @Published var numTotalDice: Int
     @Published var dice: Set<Die>

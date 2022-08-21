@@ -12,7 +12,10 @@ struct RevealView: View {
     @EnvironmentObject var game: Game
     
     private var dicePerRow: [Int] {
-        if game.dice.count % 2 == 0 {
+        if game.dice.count <= 3 {
+            return [0, game.dice.count]
+        }
+        else if game.dice.count % 2 == 0 {
             return Array(repeating: game.dice.count/2, count: 2)
         }
         else {
@@ -36,48 +39,81 @@ struct RevealView: View {
         return result
     }
     
+    
     var body: some View {
-        NavigationView {
-            VStack {
-                var dice: [Int] = diceArray
-                ForEach(0..<2) { row in
-                    HStack {
-                        ForEach(0..<dicePerRow[row]) { column in
-                            let die = dice.removeFirst()
-                            Image("Face\(die)")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        }
-                    }
-                    .frame(maxHeight: 100)
-                }
+        VStack {
+            HStack {
+                Spacer()
                 
-                HStack {
-                    Button("Lose die", role: .destructive) {
-                        game.nextRound(loseDie: true)
-                        if game.dice.count > 0 {
-                            viewRouter.currentPage = .gamePage
-                        }
-                        else {
-                            
-                        }
-                    }
-                    .buttonStyle(.bordered)
-                    
-                    Button("Keep die") {
-                        game.nextRound(loseDie: false)
-                        if game.dice.count > 0 {
-                            viewRouter.currentPage = .gamePage
-                        }
-                        else {
-                            
-                        }
-                    }
-                    .buttonStyle(.bordered)
+                Button() {
+                    viewRouter.currentPage = .menuPage
+                } label: {
+                    Image(systemName: "house")
                 }
+                .padding(.horizontal, 30)
+            }
+            
+            Spacer()
+            
+            var dice: [Int] = diceArray
+            ForEach(0..<2) { row in
+                HStack {
+                    ForEach(0..<dicePerRow[row], id: \.self) { column in
+                        let die = dice.removeFirst()
+                        Image("Face\(die)")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }
+                }
+                .frame(maxHeight: 105)
+            }
+            
+            HStack {
+                Button(role: .destructive) {
+                    game.nextRound(loseDie: true)
+                    if game.dice.count > 0 {
+                        viewRouter.currentPage = .gamePage
+                    }
+                    else {
+                        game.winner = false
+                        viewRouter.currentPage = .gameOverPage
+                    }
+                } label: {
+                    Text("Lose die")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+                
+                Button() {
+                    game.nextRound(loseDie: false)
+                    if game.dice.count != game.numTotalDice {
+                        viewRouter.currentPage = .gamePage
+                    }
+                    else {
+                        game.winner = true
+                        viewRouter.currentPage = .gameOverPage
+                    }
+                } label: {
+                    Text("Keep die")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
                 
             }
-            .padding(.horizontal)
+            .padding([.leading, .trailing], 60.0)
+            .padding(.top)
+            
+            Spacer()
+            
+            Button() {
+                viewRouter.currentPage = .gamePage
+            } label: {
+                Text("Hide dice")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+            .padding([.leading, .trailing], 60.0)
+            
         }
     }
 }
