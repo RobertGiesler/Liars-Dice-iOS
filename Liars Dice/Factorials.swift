@@ -12,9 +12,9 @@ struct Factorials {
     /// Calculates n!
     ///
     /// - parameters:
-    ///     - n: A non-negative 'Int'
-    /// - throws: 'MyError.illegalArgumentError' if a negative 'Int' is passed.
-    /// - returns: n! as a 'NSDecimalNumber'.
+    ///     - n: A non-negative `Int`
+    /// - throws: `MyError.illegalArgumentError` if a negative `Int` is passed.
+    /// - returns: n! as a `NSDecimalNumber`.
     static func factorial(n: Int) -> NSDecimalNumber {
         if n < 0 {   // Invalid argument
             return NSDecimalNumber(0)
@@ -36,10 +36,10 @@ struct Factorials {
     /// Calculates n!/m!
     ///
     /// - parameters:
-    ///     - n: A non-negative 'Int'.
-    ///     - m: A non-negative 'Int'.
-    /// - throws: 'MyError.illegalArgumentError' if a negative 'Int' is passed.
-    /// - returns: n!/m! as a 'NSDecimalNumber'.
+    ///     - n: A non-negative `Int`.
+    ///     - m: A non-negative `Int`.
+    /// - throws: `MyError.illegalArgumentError` if a negative `Int` is passed.
+    /// - returns: n!/m! as a `NSDecimalNumber`.
     static func factorialFrac(n: Int, m: Int) -> NSDecimalNumber {
         if (n < 0 || m < 0) {   // Invalid argument
             return NSDecimalNumber(0)

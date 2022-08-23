@@ -29,7 +29,7 @@ struct GameView: View {
                 } label: {
                     Image(systemName: "house")
                 }
-                .padding(.horizontal, 30.0)
+                .padding(.horizontal, 30)
             }
             
             Spacer()
@@ -48,6 +48,7 @@ struct GameView: View {
                 
                 getBidView(bid: currentBid)
             }
+            .frame(maxWidth: 600)
             
             Text("Previous bid")
                 .font(.largeTitle)
@@ -59,21 +60,21 @@ struct GameView: View {
                     .font(.subheadline)
                     
                 TextField("Number of dice", value: $numPreviousBid, format: .number)
+                    .focused($numFocus)
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
-                    .focused($numFocus)
-                    
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+                            Button("Done") {
+                                numFocus = false
+                            }
+                        }
+                    }
             }
             .padding([.leading, .trailing], 60.0)
             .padding(.bottom)
-            .toolbar {
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    Button("Done") {
-                        numFocus = false
-                    }
-                }
-            }
+            .frame(maxWidth: 600)
             
             VStack(alignment: .leading) {
                 Text("Die face")
@@ -107,6 +108,7 @@ struct GameView: View {
             }
             .padding([.leading, .trailing], 60.0)
             .padding(.bottom)
+            .frame(maxWidth: 600)
             
             HStack {
                 Button() {
@@ -150,9 +152,11 @@ struct GameView: View {
                     }
             }
             .padding([.leading, .trailing], 60.0)
+            .frame(maxWidth: 600)
             
             Spacer()
         }
+        .ignoresSafeArea(.keyboard)
     }
 
 }

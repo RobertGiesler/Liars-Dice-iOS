@@ -51,8 +51,8 @@ class Game: ObservableObject {
     
     /// Gets the current number of dice showing each face.
     ///
-    /// - returns: 'Int[]' Array of length 6 where 'diceValue[x]' is the number of dice currently
-    ///     showing the face 'x+1'.
+    /// - returns: `Int[]` Array of length 6 where `diceValue[x]` is the number of dice currently
+    ///     showing the face `x+1`.
     func getDiceValues() -> [Int] {
         var diceValues: [Int] = Array(repeating: 0, count: 6)
         
@@ -64,7 +64,7 @@ class Game: ObservableObject {
     }
     
     
-    /// Calculates the probability that there are at least 'quantity' many dice of face 'face' on the table.
+    /// Calculates the probability that there are at least `quantity` many dice of face `face` on the table.
     ///
     /// - parameters:
     ///     - quantity: The quantity of dice bid.
@@ -137,11 +137,11 @@ class Game: ObservableObject {
     }
     
     
-    /// Updates the Array 'bidProbs' based on current dice and a previous bid.
+    /// Updates the Array `bidProbs` based on current dice and a previous bid.
     /// - parameters:
     ///     - quantity: Quantity of dice bid on in the previous bid.
     ///     - face: Die face bid on in the previous bid.
-    /// - throws: 'MyError.illegalArgumentError' if a quantity less than 1 is passed.
+    /// - throws: `MyError.illegalArgumentError` if a quantity less than 1 is passed.
     func updateBidProbabilities(quantity: Int, face: Face) throws {
         if quantity <= 0 {
             throw MyError.illegalArgumentError("quantity must be greater than 0.")
@@ -191,7 +191,7 @@ class Game: ObservableObject {
     
     /// Produces a bid based on the current state of bidProbs.
     ///
-    /// - returns: '[i,n]' where 'i' is the face value and 'n' is the dice quantity of the bid. If 'i == 0', the previous bid is called as a lie.
+    /// - returns: `[i,n]` where `i` is the face value and `n` is the dice quantity of the bid. If `i == 0`, the previous bid is called as a lie.
     func bid() -> [Int] {
         var maxIndex = 0
         
