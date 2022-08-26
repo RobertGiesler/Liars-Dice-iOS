@@ -34,77 +34,87 @@ struct MenuView: View {
     }
     
     var body: some View {
-        VStack {
-            Spacer()
+        Background {
             VStack {
-                Text("Liar's Dice")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                Spacer()
+                VStack {
+                    Text("Liar's Dice")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    
+                    Image("twoDice")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 250.0, height: 150.0)
+                }
+                .onAppear(perform: {playSounds("pirates_flute.mp3")})
                 
-                Image("twoDice")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 250.0, height: 150.0)
-            }
-            .onAppear(perform: {playSounds("pirates_flute.mp3")})
-            
-            VStack() {
-                Text("Dice per player")
-                    .font(.subheadline)
-                TextField("Dice per player", value: $dicePerPlayer, format: .number)
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
-                    .focused($diceFocus)
-                    
-            }
-            .padding([.leading, .trailing], 90.0)
-            .padding(.bottom)
-                            
-            VStack() {
-                Text("Number of players")
-                    .font(.subheadline)
-                TextField("Number of players", value: $numPlayers, format: .number)
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
-                    .focused($playerFocus)
-                    
-            }
-            .padding([.leading, .trailing], 90.0)
-            .padding(.bottom)
-            
-            Button("Play") {
-                if let numPlayers = numPlayers {
-                    do {
-                        try game.resetGame(numPlayers: numPlayers, dicePerPlayer: dicePerPlayer)
-                        viewRouter.currentPage = .gamePage
-                    } catch {
-                        negativeNumAlert = true
+                VStack() {
+                    Text("Dice per player")
+                        .font(.subheadline)
+                    TextField("Dice per player", value: $dicePerPlayer, format: .number)
+                        .keyboardType(.numberPad)
+                        .textFieldStyle(.roundedBorder)
+                        .focused($diceFocus)
+                        
+                }
+                .padding([.leading, .trailing], 90.0)
+                .padding(.bottom)
+                                
+                VStack() {
+                    Text("Number of players")
+                        .font(.subheadline)
+                    TextField("Number of players", value: $numPlayers, format: .number)
+                        .keyboardType(.numberPad)
+                        .textFieldStyle(.roundedBorder)
+                        .focused($playerFocus)
+                        
+                }
+                .padding([.leading, .trailing], 90.0)
+                .padding(.bottom)
+                
+                Button("Play") {
+                    if let numPlayers = numPlayers {
+                        do {
+                            try game.resetGame(numPlayers: numPlayers, dicePerPlayer: dicePerPlayer)
+                            viewRouter.currentPage = .gamePage
+                        } catch {
+                            negativeNumAlert = true
+                        }
+                    }
+                    else {
                     }
                 }
-                else {
+                .disabled(numPlayers == nil)
+                .controlSize(.large)
+                .buttonStyle(.borderedProminent)
+                .padding()
+                .alert("Number of dice and players must be positive", isPresented: $negativeNumAlert) {
+                    Button("OK", role: .cancel) {}
                 }
-            }
-            .disabled(numPlayers == nil)
-            .controlSize(.large)
-            .buttonStyle(.borderedProminent)
-            .padding()
-            .alert("Number of dice and players must be positive", isPresented: $negativeNumAlert) {
-                Button("OK", role: .cancel) {}
-            }
-            
-            Spacer()
-            
-        }
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
+                
                 Spacer()
-                Button("Done") {
-                    playerFocus = false
-                    diceFocus = false
+                
+            }
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        playerFocus = false
+                        diceFocus = false
+                    }
                 }
             }
+        }
+        .onTapGesture {
+            self.endEditing()
         }
     }
+    
+    private func endEditing() {
+            UIApplication.shared.endEditing()
+        }
+    
 }
 
 struct MenuView_Previews: PreviewProvider {
