@@ -12,7 +12,7 @@ struct GameView: View {
     @EnvironmentObject var game: Game
     
     @State private var currentBid: [Int] = [-1,0]
-    @State private var numPreviousBid: Int? = nil
+    @State private var numPreviousBid: Int = 1
     @State private var facePreviousBid: Face? = nil
     @State private var negativeNumAlert: Bool = false
     
@@ -58,19 +58,17 @@ struct GameView: View {
             VStack(alignment: .leading) {
                 Text("Number of dice")
                     .font(.subheadline)
+                    .padding(.bottom)
                     
-                TextField("Number of dice", value: $numPreviousBid, format: .number)
-                    .focused($numFocus)
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            Spacer()
-                            Button("Done") {
-                                numFocus = false
-                            }
-                        }
-                    }
+                VStack {
+                    Text("\(numPreviousBid)")
+                        .font(.title)
+                    
+                    Slider(
+                        value: IntDoubleBinding($numPreviousBid).doubleValue,
+                        in: 1.0...Double(game.numTotalDice),
+                        step: 1.0)
+                }
             }
             .padding([.leading, .trailing], 60.0)
             .padding(.bottom)
@@ -121,23 +119,23 @@ struct GameView: View {
                 
                 
                 Button() {
-                    /* Update bid probabilities and bit if numPreviousBid and
-                     facePreviousBid are not nil */
-                    if let quantity = numPreviousBid, let face = facePreviousBid {
+                    /* Update bid probabilities and bid if facePreviousBid is
+                    not nil and numPreviousBid > 0 */
+                    if facePreviousBid != nil && numPreviousBid > 0 {
                         do {
-                            try game.updateBidProbabilities(quantity: quantity, face: face)
+                            try game.updateBidProbabilities(quantity: numPreviousBid, face: facePreviousBid!)
                             
                             currentBid = game.bid()
                         } catch {
                             negativeNumAlert = true
                         }
                     }
-                    // If one is nil, place first bid
+                    // Else, place first bid
                     else {
                         currentBid = game.bid()
                     }
                 } label: {
-                    if numPreviousBid == nil || facePreviousBid == nil {
+                    if numPreviousBid == 0 || facePreviousBid == nil {
                         Text("First bid")
                             .frame(maxWidth: .infinity)
                     }
@@ -198,6 +196,22 @@ extension View {
         } else {
             self
         }
+    }
+}
+
+struct IntDoubleBinding {
+    let intValue : Binding<Int>
+    
+    let doubleValue : Binding<Double>
+    
+    init(_ intValue : Binding<Int>) {
+        self.intValue = intValue
+        
+        self.doubleValue = Binding<Double>(get: {
+            return Double(intValue.wrappedValue)
+        }, set: {
+            intValue.wrappedValue = Int($0)
+        })
     }
 }
 
