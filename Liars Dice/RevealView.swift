@@ -10,17 +10,41 @@ import SwiftUI
 struct DiceOnTableView: View {
     let diceArray: [Int]
     
+    /// Calculate the number of dice to show per row in the reveal view
+    private var dicePerRow: [Int] {
+        if diceArray.count <= 3 {
+            return [diceArray.count]
+        }
+        else if diceArray.count % 3 == 0 {
+            return Array(repeating: 3, count: diceArray.count/3)
+        }
+        else if diceArray.count == 4 {
+            return [2,2]
+        }
+        else {
+            let fullRows: Int = diceArray.count / 3
+            let diceInFirstRow: Int = diceArray.count % 3
+            var result = Array(repeating: 3, count: fullRows)
+            result.insert(diceInFirstRow, at: 0)
+            return result
+        }
+    }
+    
+    /// Calculate the index of the diceArray to access
+    private func calcIndex(row: Int, column: Int) -> Int {
+        var index: Int = 0
+        for i in 0..<row {
+            index += dicePerRow[i]
+        }
+        return index + column
+    }
+    
     var body: some View {
-        let fullRows: Int = diceArray.count / 3
-        let diceInLastRow: Int = diceArray.count % 3
-        
         VStack {
-            var dice: [Int] = diceArray
-            
-            ForEach(0..<fullRows, id: \.self) { row in
+            ForEach(0..<dicePerRow.count, id: \.self) { row in
                 HStack {
-                    ForEach(0..<3) { column in
-                        let die = dice.removeFirst()
+                    ForEach(0..<dicePerRow[row], id: \.self) { column in
+                        let die = diceArray[calcIndex(row: row, column: column)]
                         Image("Face\(die)")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -28,16 +52,6 @@ struct DiceOnTableView: View {
                 }
                 .frame(maxHeight: 105)
             }
-            
-            HStack {
-                ForEach(0..<diceInLastRow, id: \.self) { column in
-                    let die = dice.removeFirst()
-                    Image("Face\(die)")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                }
-            }
-            .frame(maxHeight: 105)
         }
     }
 }
