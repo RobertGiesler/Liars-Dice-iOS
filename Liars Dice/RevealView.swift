@@ -7,22 +7,44 @@
 
 import SwiftUI
 
+struct DiceOnTableView: View {
+    let diceArray: [Int]
+    
+    var body: some View {
+        let fullRows: Int = diceArray.count / 3
+        let diceInLastRow: Int = diceArray.count % 3
+        
+        VStack {
+            var dice: [Int] = diceArray
+            
+            ForEach(0..<fullRows, id: \.self) { row in
+                HStack {
+                    ForEach(0..<3) { column in
+                        let die = dice.removeFirst()
+                        Image("Face\(die)")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }
+                }
+                .frame(maxHeight: 105)
+            }
+            
+            HStack {
+                ForEach(0..<diceInLastRow, id: \.self) { column in
+                    let die = dice.removeFirst()
+                    Image("Face\(die)")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+            }
+            .frame(maxHeight: 105)
+        }
+    }
+}
+
 struct RevealView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var game: Game
-    
-    private var dicePerRow: [Int] {
-        if game.dice.count <= 3 {
-            return [0, game.dice.count]
-        }
-        else if game.dice.count % 2 == 0 {
-            return Array(repeating: game.dice.count/2, count: 2)
-        }
-        else {
-            let num = Int((Double(game.dice.count)/2.0).rounded(.up))
-            return [num-1, num]
-        }
-    }
     
     // Returns Array of current dice in order, e.g. [1,1,3,4,6]
     private var diceArray: [Int] {
@@ -39,7 +61,6 @@ struct RevealView: View {
         return result
     }
     
-    
     var body: some View {
         VStack {
             HStack {
@@ -55,18 +76,7 @@ struct RevealView: View {
             
             Spacer()
             
-            var dice: [Int] = diceArray
-            ForEach(0..<2) { row in
-                HStack {
-                    ForEach(0..<dicePerRow[row], id: \.self) { column in
-                        let die = dice.removeFirst()
-                        Image("Face\(die)")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    }
-                }
-                .frame(maxHeight: 105)
-            }
+            DiceOnTableView(diceArray: diceArray)
             
             HStack {
                 Button(role: .destructive) {
