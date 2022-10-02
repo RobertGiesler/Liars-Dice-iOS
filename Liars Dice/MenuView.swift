@@ -59,6 +59,7 @@ struct MenuView: View {
             }
             .padding([.leading, .trailing], 90.0)
             .padding(.bottom)
+            .frame(maxWidth: 600)
                             
             VStack() {
                 Text("Number of players")
@@ -71,6 +72,7 @@ struct MenuView: View {
             }
             .padding([.leading, .trailing], 90.0)
             .padding(.bottom)
+            .frame(maxWidth: 600)
             
             Button("Play") {
                 if let numPlayers = numPlayers {

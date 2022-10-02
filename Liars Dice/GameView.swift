@@ -18,6 +18,7 @@ struct GameView: View {
     
     @FocusState private var numFocus: Bool
     
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack {
@@ -43,8 +44,8 @@ struct GameView: View {
                     .frame(height: 120)
                     .cornerRadius(15)
                     .padding([.leading, .trailing], 60.0)
-                    .foregroundColor(.brown)
-                    .opacity(0.2)
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                    .opacity(0.1)
                 
                 getBidView(bid: currentBid)
             }

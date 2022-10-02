@@ -126,6 +126,7 @@ struct RevealView: View {
             }
             .padding([.leading, .trailing], 60.0)
             .padding(.top)
+            .frame(maxWidth: 600)
             
             Spacer()
             
@@ -137,6 +138,7 @@ struct RevealView: View {
             }
             .buttonStyle(.bordered)
             .padding([.leading, .trailing], 60.0)
+            .frame(maxWidth: 600)
             
         }
     }
