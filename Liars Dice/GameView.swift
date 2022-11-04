@@ -151,6 +151,7 @@ struct GameView: View {
                     }
             }
             .padding([.leading, .trailing], 60.0)
+            .padding([.bottom], 20.0)
             .frame(maxWidth: 600)
             
             Spacer()

@@ -137,7 +137,7 @@ struct RevealView: View {
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.bordered)
-            .padding([.leading, .trailing], 60.0)
+            .padding([.leading, .trailing, .bottom], 60.0)
             .frame(maxWidth: 600)
             
         }
