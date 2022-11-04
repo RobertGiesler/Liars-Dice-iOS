@@ -18,21 +18,6 @@ struct MenuView: View {
     @FocusState private var playerFocus: Bool
     @FocusState private var diceFocus: Bool
     
-    @State var audioPlayer: AVAudioPlayer!
-    
-    func playSounds(_ soundFileName : String) {
-            guard let soundURL = Bundle.main.url(forResource: soundFileName, withExtension: nil) else {
-                fatalError("Unable to find \(soundFileName) in bundle")
-            }
-
-            do {
-                audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
-            } catch {
-                print(error.localizedDescription)
-            }
-            audioPlayer.play()
-    }
-    
     var body: some View {
         VStack {
             Spacer()
@@ -46,7 +31,6 @@ struct MenuView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250.0, height: 150.0)
             }
-            .onAppear(perform: {playSounds("pirates_flute.mp3")})
             
             VStack() {
                 Text("Dice per player")
