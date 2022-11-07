@@ -76,70 +76,69 @@ struct RevealView: View {
     }
     
     var body: some View {
-        VStack {
-            HStack {
+        NavigationView {
+            VStack {
+                Spacer()
+                
+                DiceOnTableView(diceArray: diceArray)
+                
+                HStack {
+                    Button(role: .destructive) {
+                        game.nextRound(loseDie: true)
+                        if game.dice.count > 0 {
+                            viewRouter.currentPage = .gamePage
+                        }
+                        else {
+                            game.winner = false
+                            viewRouter.currentPage = .gameOverPage
+                        }
+                    } label: {
+                        Text("Lose die")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                    
+                    Button() {
+                        game.nextRound(loseDie: false)
+                        if game.dice.count != game.numTotalDice {
+                            viewRouter.currentPage = .gamePage
+                        }
+                        else {
+                            game.winner = true
+                            viewRouter.currentPage = .gameOverPage
+                        }
+                    } label: {
+                        Text("Keep die")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                    
+                }
+                .padding([.leading, .trailing], 60.0)
+                .padding(.top)
+                .frame(maxWidth: 600)
+                
                 Spacer()
                 
                 Button() {
-                    viewRouter.currentPage = .menuPage
+                    viewRouter.currentPage = .gamePage
                 } label: {
-                    Image(systemName: "house")
-                }
-                .padding(.horizontal, 30)
-            }
-            
-            Spacer()
-            
-            DiceOnTableView(diceArray: diceArray)
-            
-            HStack {
-                Button(role: .destructive) {
-                    game.nextRound(loseDie: true)
-                    if game.dice.count > 0 {
-                        viewRouter.currentPage = .gamePage
-                    }
-                    else {
-                        game.winner = false
-                        viewRouter.currentPage = .gameOverPage
-                    }
-                } label: {
-                    Text("Lose die")
+                    Text("Hide dice")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.bordered)
-                
-                Button() {
-                    game.nextRound(loseDie: false)
-                    if game.dice.count != game.numTotalDice {
-                        viewRouter.currentPage = .gamePage
-                    }
-                    else {
-                        game.winner = true
-                        viewRouter.currentPage = .gameOverPage
-                    }
-                } label: {
-                    Text("Keep die")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.bordered)
+                .padding([.leading, .trailing, .bottom], 60.0)
+                .frame(maxWidth: 600)
                 
             }
-            .padding([.leading, .trailing], 60.0)
-            .padding(.top)
-            .frame(maxWidth: 600)
-            
-            Spacer()
-            
-            Button() {
-                viewRouter.currentPage = .gamePage
-            } label: {
-                Text("Hide dice")
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.bordered)
-            .padding([.leading, .trailing, .bottom], 60.0)
-            .frame(maxWidth: 600)
-            
+            .navigationBarItems(
+                trailing:
+                    Button() {
+                        viewRouter.currentPage = .menuPage
+                    } label: {
+                        Image(systemName: "house")
+                    }
+            )
         }
     }
 }
